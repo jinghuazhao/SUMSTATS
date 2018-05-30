@@ -1,6 +1,6 @@
 # 30-5-2018 JHZ
 
-git add README.md README.pdf
+git add README.*
 git commit -m "README"
 for d in st.sh
 do
