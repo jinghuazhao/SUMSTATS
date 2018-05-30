@@ -6,7 +6,7 @@ The repository is created to provide input for FM-pipeline, PW-pipeline and poss
 
 ## Information from UCSC
 
-## format
+## Formatting
 
 ## GWAS summary statistics
 
