@@ -27,12 +27,12 @@ The chromosomal positions for the current build can be downloaded from the UCSC 
 should be helpful for GWAS summary statistics either using chromosomal positions from different
 build or without these at all.
 ```bash
-wget http://hgdownload.soe.ucsc.edu/goldenPath/hg18/database/snp130.txt.gz
-gunzip -c snp130.txt.gz | \
+wget http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.txt.gz
+gunzip -c snp150.txt.gz | \
 awk '{split($2,a,"_");sub(/chr/,"",a[1]);print a[1],$4,$5}' | \
-sort -k3,3 > snp130.txt
+sort -k3,3 > snp150.txt
 ```
-where it first obtains build 37 positions, sorts them by RSid into the file `snp130.txt`.
+where it first obtains build 37 positions, sorts them by RSid into the file `snp150.txt`.
 
 ## Examples
 
@@ -45,7 +45,7 @@ wget http://portals.broadinstitute.org/collaboration/giant/images/1/15/SNP_gwas_
 gunzip -c SNP_gwas_mc_merge_nogc.tbl.uniq.gz |
 awk 'NR>1' | \
 sort -k1,1 | \
-join -11 -23 - snp130.txt | \
+join -11 -23 - snp150.txt | \
 awk '($9!="X" && $9!="Un")' > bmi.txt
 ```
 where file containing the GWAS summary statistics is downloaded, its header dropped, sorted and positional information added leading to a file named `bmi.txt`.
