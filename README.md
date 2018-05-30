@@ -1,8 +1,8 @@
 # SUMSTATS
 
-Preparation of GWAS summary statistics
+Description of GWAS summary statistics
 
-The repository is created to provide input for PW-pipeline, FM-pipeline including GCTA, and possibly others here.
+The repository shows how to provide input for PW-pipeline, FM-pipeline including GCTA, and possibly others here.
 
 Briefly, the format has the following columns,
 
@@ -26,7 +26,7 @@ Column | Name | Description
 The chromosomal positions for the current build can be downloaded from the UCSC website, which
 should be helpful for GWAS summary statistics either using chromosomal positions from different
 build or without these at all.
-```
+```bash
 wget http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.txt.gz
 gunzip -c snp150.txt.gz | \
 awk '{split($2,a,"_");sub(/chr/,"",a[1]);print a[1],$4,$5}' | \
@@ -111,7 +111,7 @@ write.table(ST4, file="ST4", row.names=FALSE, col.names=FALSE, quote=FALSE)
 END
 ```
 where we generate data based on the paper's supplementary tables ST3 and ST4; the former is in line with the paper (by 
-specifying  `_db`=depict and `p_threshold`=0.00001, see below).
+specifying  `_db`=depict and `p_threshold`=0.00001 when calling PW-pipeline).
 
 ## References
 
