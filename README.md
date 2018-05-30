@@ -2,7 +2,7 @@
 
 Preparation of GWAS summary statistics
 
-The repository is created to provide input for FM-pipeline, PW-pipeline and possibly others here.
+The repository is created to provide input for PW-pipeline, FM-pipeline including GCTA, and possibly others here.
 
 Briefly, the format has the following columns,
 
@@ -115,11 +115,10 @@ specifying  `_db`=depict and `p_threshold`=0.00001, see below).
 
 ## References
 
-**[GIANT](https://portals.broadinstitute.org/collaboration/giant/index.php/Main_Page)** (Genetic Investigation of ANthropometric Traits)
+**[GIANT](https://portals.broadinstitute.org/collaboration/giant/index.php/Main_Page)** (Genetic Investigation of ANthropometric Traits) data
 
 Locke AE, et al. (2015) Genetic studies of body mass index yield new insights for obesity biology. Nature 518(7538):197-206. doi: 10.1038/nature14177
 
-**[DIAGRAM](http://www.diagram-consortium.org/)** (DIAbetes Genetics Replication And Meta-analysis)
+**[DIAGRAM](http://www.diagram-consortium.org/)** (DIAbetes Genetics Replication And Meta-analysis) data
 
 Scott R, et al. (2017) An Expanded Genome-Wide Association Study of Type 2 Diabetes in Europeans. Diabetes 66:2888–2902.
-
