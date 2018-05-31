@@ -19,7 +19,7 @@ Column | Name | Description
 9*  | chr | chromosome
 10* | pos | position
 
-\* These two columns can be obtained from UCSC as shown below.
+\* These two columns can be obtained from [UCSC website](https://genome.ucsc.edu/) as shown below.
 
 ## Information from UCSC
 
@@ -38,7 +38,7 @@ where it first obtains build 37 positions, sorts them by RSid into the file `snp
 
 ### BMI
 
-We take data reprted by Locke, et al. (2015) as example which requires build 37 positions than can be downloaded from the UCSC website described above.
+We take data reprted by Locke, et al. (2015) as example which requires build 37 positions from UCSC described above.
 ```
 # GWAS summary statistics
 wget http://portals.broadinstitute.org/collaboration/giant/images/1/15/SNP_gwas_mc_merge_nogc.tbl.uniq.gz
@@ -50,6 +50,17 @@ awk '($9!="X" && $9!="Y" && $9!="Un")' > bmi.txt
 ```
 where file containing the GWAS summary statistics is downloaded, its header dropped, sorted and positional information added leading to a file named `bmi.txt`.
 We also filter out nonautosomal SNPs.
+
+The list of 97 SNPs can be extracted as follows,
+```bash
+R --no-save <<END
+library(openxlsx)
+xlsx <- "https://www.nature.com/nature/journal/v518/n7538/extref/nature14177-s2.xlsx"
+snps <- read.xlsx(xlsx, sheet = 4, colNames=FALSE, skipEmptyRows = FALSE, cols = 1, rows = 5:101)
+snplist <- sort(as.vector(snps[,1]))
+write.table(snplist, file="97.snps", row.names=FALSE, col.names=FALSE, quote=FALSE)
+END
+```
 
 ### T2D
 
