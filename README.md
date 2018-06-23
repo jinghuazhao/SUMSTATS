@@ -19,7 +19,7 @@ Column | Name | Description
 9*  | chr | chromosome
 10* | pos | position
 
-\* These two columns can be obtained from [UCSC website](https://genome.ucsc.edu/) as shown below.
+\* These two columns can be obtained from https://genome.ucsc.edu/ as shown below.
 
 ## Information from UCSC
 
