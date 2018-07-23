@@ -21,6 +21,8 @@ Column | Name | Description
 
 \* These two columns can be obtained from https://genome.ucsc.edu/ as shown below.
 
+It might be worthwhile to check for options with the sumstats as defined in ldsc, https://github.com/bulik/ldsc, and particularly its munge_sumstats.py utility.
+
 ## Information from UCSC
 
 The chromosomal positions for the current build can be downloaded from the UCSC website, which
