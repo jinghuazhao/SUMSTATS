@@ -30,7 +30,7 @@ sort -k3,3 > snp150.txt
 ```
 where it first obtains build 37 positions, sorts them by RSid into the file `snp150.txt`. 
 
-Robinson PN, Piro RM, Jager K (2018). [Computational Exome and Genome Analysis](https://www.crcpress.com/Computational-Exome-and-Genome-Analysis/Robinson-Piro-Jager/p/book/9781498775984), CRC gives the following informaiton on hg38 reference genome assembly,
+Besides standard chromosomal positions, hg38 reference genome assembly also has other categories,
 
 > * **Random contigs** (e.g., chrY_KI270740v1_random). Unlocalized sequences that are known to originate from specic chromosomes, but whose exact location within the chromosomes is not known (e.g., chr9_KI270720v1_random).
 
@@ -43,6 +43,8 @@ Robinson PN, Piro RM, Jager K (2018). [Computational Exome and Genome Analysis](
 > * **Decoy sequences** (e.g., chrUn_KN707606v1_decoy). A major motivation for including the \decoy" sequences in the reference genome is that if a sample actually contains a genomic segment that is not in the reference assembly, aligners may spend a lot of CPU time trying to nd a good match, or worse, aligners may wrongly assign the reads with a low mapping quality to segments with similar sequences in the reference genome. If the segment matches to one of the decoy contigs and the decoy is included in the reference, then the segment will quickly be assigned to the decoy and prevent the aligner from uselessly searching for other matches. Thus, the decoy sequences are a pragmatic solution to this, contain EBV and human sequences that in eect \catch" reads that would otherwise map with low quality to other regions in the reference and lead to unnecessary computation and avoid false variant calls related to false mappings.
 
 > * **Alternate contigs** (e.g., chr3_KI270778v1_alt). Alternative sequence paths in regions with complex structural variation in the form of additional locus sequences.
+
+*Source*: Robinson PN, Piro RM, Jager K (2018). [Computational Exome and Genome Analysis](https://www.crcpress.com/Computational-Exome-and-Genome-Analysis/Robinson-Piro-Jager/p/book/9781498775984), CRC.
 
 It might be worthwhile to check for options with the sumstats as defined in ldsc, https://github.com/bulik/ldsc, and particularly its munge_sumstats.py utility.
 
