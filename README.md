@@ -19,9 +19,7 @@ Column | Name | Description
 9*  | chr | chromosome
 10* | pos | position
 
-\* These two columns can be obtained from https://genome.ucsc.edu/ as shown here.
-
-The chromosomal positions for the current build can be downloaded from the UCSC website, which
+\* These two columns can be obtained from https://genome.ucsc.edu/, which
 should be helpful for GWAS summary statistics either using chromosomal positions from different
 build or without these at all.
 ```bash
@@ -30,7 +28,19 @@ gunzip -c snp150.txt.gz | \
 awk '{split($2,a,"_");sub(/chr/,"",a[1]);print a[1],$4,$5}' | \
 sort -k3,3 > snp150.txt
 ```
-where it first obtains build 37 positions, sorts them by RSid into the file `snp150.txt`.
+where it first obtains build 37 positions, sorts them by RSid into the file `snp150.txt`. 
+
+Note from Robinson PN, Piro RM, Jager K (2018). [Computational Exome and Genome Analysis](https://www.crcpress.com/Computational-Exome-and-Genome-Analysis/Robinson-Piro-Jager/p/book/9781498775984), CRC., for hg38 reference genome assembly
+
+> * **Random contigs** Unlocalized sequences that are known to originate from specic chromosomes, but whose exact location within the chromosomes is not known (e.g., chr9_KI270720v1_random).
+
+> * **ChrUn** Unplaced sequences that are known to originate from the human genome, but which cannot be condently placed on a specic chromosome.
+
+> * **EBV** Epstein-Barr virus sequence, representing the genome of Human herpes virus 4 type 1, the cause of infectious mononucleosis. This disease results in fever, sore throat, and enlarged cervical lymph nodes. About 98% of adults have been exposed to the virus by the age of 40 years. Since the virus remains latent in the body after infection, it is very common to nd EBV sequences when performing human genome sequencing.
+
+> * **HLA** Human leukocyte antigen (HLA) sequences representing selected alleles of the HLA A, B, C, DQA1, DQB1, and DRB1 loci. The HLA loci encode the major histocompatibility complex (MHC) proteins and are highly variable in the population. Decoy sequences A major motivation for including the \decoy" sequences in the reference genome is that if a sample actually contains a genomic segment that is not in the reference assembly, aligners may spend a lot of CPU time trying to nd a good match, or worse, aligners may wrongly assign the reads with a low mapping quality to segments with similar sequences in the reference genome. If the segment matches to one of the decoy contigs and the decoy is included in the reference, then the segment will quickly be assigned to the decoy and prevent the aligner from uselessly searching for other matches. Thus, the decoy sequences are a pragmatic solution to this, contain EBV and human sequences that in eect \catch" reads that would otherwise map with low quality to other regions in the reference and lead to unnecessary computation and avoid false variant calls related to false mappings.
+
+> * **Alternate contigs** Alternative sequence paths in regions with complex structural variation in the form of additional locus sequences.
 
 It might be worthwhile to check for options with the sumstats as defined in ldsc, https://github.com/bulik/ldsc, and particularly its munge_sumstats.py utility.
 
