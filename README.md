@@ -2,7 +2,7 @@
 
 Description of GWAS summary statistics
 
-The repository shows how to provide input for PW-pipeline, FM-pipeline including GCTA, and possibly others here.
+The repository shows how to provide input for PW-pipeline, FM-pipeline including GCTA, among others.
 
 Briefly, the format has the following columns,
 
