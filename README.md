@@ -19,11 +19,7 @@ Column | Name | Description
 9*  | chr | chromosome
 10* | pos | position
 
-\* These two columns can be obtained from https://genome.ucsc.edu/ as shown below.
-
-It might be worthwhile to check for options with the sumstats as defined in ldsc, https://github.com/bulik/ldsc, and particularly its munge_sumstats.py utility.
-
-## Information from UCSC
+\* These two columns can be obtained from https://genome.ucsc.edu/ as shown here.
 
 The chromosomal positions for the current build can be downloaded from the UCSC website, which
 should be helpful for GWAS summary statistics either using chromosomal positions from different
@@ -35,6 +31,8 @@ awk '{split($2,a,"_");sub(/chr/,"",a[1]);print a[1],$4,$5}' | \
 sort -k3,3 > snp150.txt
 ```
 where it first obtains build 37 positions, sorts them by RSid into the file `snp150.txt`.
+
+It might be worthwhile to check for options with the sumstats as defined in ldsc, https://github.com/bulik/ldsc, and particularly its munge_sumstats.py utility.
 
 ## Examples
 
