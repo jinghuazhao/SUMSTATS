@@ -158,7 +158,7 @@ Locke AE, et al. (2015) Genetic studies of body mass index yield new insights fo
 
 Scott R, et al. (2017) An Expanded Genome-Wide Association Study of Type 2 Diabetes in Europeans. *Diabetes* 66:2888–2902.
 
-**[CEU website](http://www.phpc.cam.ac.uk/ceu/proteins/)**
+**Cardiovascular Epidemiology Unit (CEU) [protein website](http://www.phpc.cam.ac.uk/ceu/proteins/)**
 
 Sun BB, etl a. (2018) Genomic atlas of the human plasma proteome. *Nature* 558: 73-79.
 
