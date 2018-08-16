@@ -138,6 +138,7 @@ specifying  `_db`=depict and `p_threshold`=0.00001 when calling PW-pipeline).
 
 ### Plasma proteins
 
+The data was reported by Sun, et al. (2018)
 ```bash
 require(openxlsx)
 # Supplementary Table 4
