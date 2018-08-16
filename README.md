@@ -136,15 +136,27 @@ END
 where we generate data based on the paper's supplementary tables ST3 and ST4; the former is in line with the paper (by 
 specifying  `_db`=depict and `p_threshold`=0.00001 when calling PW-pipeline).
 
+### Plasma proteins
+
+```bash
+require(openxlsx)
+# Supplementary Table 4
+xlsx <- "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-018-0175-2/MediaObjects/41586_2018_175_MOESM4_ESM.xlsx"
+ST4 <- read.xlsx(xlsx, sheet=4, colNames=TRUE, skipEmptyRows=FALSE, cols=c(6:8,11:13,23:25), rows=6:1986)
+names(ST4) <- c("SNP","Chr","Pos","A1","A2","EAF","b","se","p")
+```
+
 ## References
 
 **[GIANT](https://portals.broadinstitute.org/collaboration/giant/index.php/Main_Page)** (Genetic Investigation of ANthropometric Traits) data
 
-Locke AE, et al. (2015) Genetic studies of body mass index yield new insights for obesity biology. Nature 518(7538):197-206. doi: 10.1038/nature14177
+Locke AE, et al. (2015) Genetic studies of body mass index yield new insights for obesity biology. *Nature* 518(7538):197-206. doi: 10.1038/nature14177
 
 **[DIAGRAM](http://www.diagram-consortium.org/)** (DIAbetes Genetics Replication And Meta-analysis) data
 
-Scott R, et al. (2017) An Expanded Genome-Wide Association Study of Type 2 Diabetes in Europeans. Diabetes 66:2888–2902.
+Scott R, et al. (2017) An Expanded Genome-Wide Association Study of Type 2 Diabetes in Europeans. *Diabetes* 66:2888–2902.
+
+Sun BB, etl a. (2018) Genomic atlas of the human plasma proteome. *Nature* 558: 73-79.
 
 ---
 
