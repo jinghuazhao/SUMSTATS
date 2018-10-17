@@ -61,7 +61,7 @@ join -11 -23 - snp150.txt | \
 awk '($9!="X" && $9!="Y" && $9!="Un")' | \
 gzip -f > bmi.txt.gz
 ```
-where file containing the GWAS summary statistics is downloaded, its header dropped, sorted and positional information added leading to a compressed file named `[bmi.txt.gz](bmi.txt.gz)`.
+where file containing the GWAS summary statistics is downloaded, its header dropped, sorted and positional information added leading to a compressed file named [bmi.txt.gz](bmi.txt.gz).
 We also filter out nonautosomal SNPs.
 
 The list of 97 SNPs can be extracted as follows,
