@@ -58,9 +58,10 @@ gunzip -c SNP_gwas_mc_merge_nogc.tbl.uniq.gz |
 awk 'NR>1' | \
 sort -k1,1 | \
 join -11 -23 - snp150.txt | \
-awk '($9!="X" && $9!="Y" && $9!="Un")' > bmi.txt
+awk '($9!="X" && $9!="Y" && $9!="Un")' | \
+gzip -f > bmi.txt.gz
 ```
-where file containing the GWAS summary statistics is downloaded, its header dropped, sorted and positional information added leading to a file named `bmi.txt`.
+where file containing the GWAS summary statistics is downloaded, its header dropped, sorted and positional information added leading to a compressed file named `[bmi.txt.gz](bmi.txt.gz)`.
 We also filter out nonautosomal SNPs.
 
 The list of 97 SNPs can be extracted as follows,
@@ -73,6 +74,7 @@ snplist <- sort(as.vector(snps[,1]))
 write.table(snplist, file="97.snps", row.names=FALSE, col.names=FALSE, quote=FALSE)
 END
 ```
+The list is SNPs is contained in [97.snps](97.snps).
 
 ### T2D
 
