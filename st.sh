@@ -1,8 +1,8 @@
-# 30-5-2018 JHZ
+# 17-10-2018 JHZ
 
 git add README.*
 git commit -m "README"
-for d in st.sh
+for d in bmi.txt.gz st.sh
 do
    git add $d
    git commit -m "$d"
