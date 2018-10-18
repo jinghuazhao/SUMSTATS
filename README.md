@@ -21,7 +21,7 @@ Column | Name | Description
 
 \* These two columns can be obtained from https://genome.ucsc.edu/, which
 should be helpful for GWAS summary statistics either using chromosomal positions from different
-build or without these at all.
+builds or without these at all.
 ```bash
 wget http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.txt.gz
 gunzip -c snp150.txt.gz | \
