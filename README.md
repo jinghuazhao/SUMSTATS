@@ -31,7 +31,7 @@ sort -k3,3 > snp150.txt
 where it first obtains build 37 positions, sorts them by RSid into the file `snp150.txt`. Otherwise [snp150.sql](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql) for MySQL database can be amended with 
 ```mysql
 gunzip -c snp150.txt.gz > snp150.txt
-load data local infile '/scratch/public_databases/dbsnp138_B37/snp150.txt' into table snp150;
+load data local infile 'snp150.txt' into table snp150;
 ```
 Besides standard chromosomal positions, hg38 reference genome assembly also has other categories<sup>[1](#footnote1)</sup> ,
 
