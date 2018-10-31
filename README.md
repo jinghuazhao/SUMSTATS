@@ -28,20 +28,20 @@ gunzip -c snp150.txt.gz | \
 awk '{split($2,a,"_");sub(/chr/,"",a[1]);print a[1],$4,$5}' | \
 sort -k3,3 > snp150.txt
 ```
-where it first obtains build 37 positions, sorts them by RSid into the file `snp150.txt`.
-
-Otherwise [snp150.sql](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql) can be amended as follows,
+where it first obtains build 37 positions, sorts them by RSid into the file `snp150.txt`. More flexiblly, 
+we can do as in [TWAS-pipeline](https://github.com/jinghuazhao/TWAS-pipeline/wiki/Building-reference-panel)
+on refGene by electing appropriate columns,
 ```bash
-# to a MySQL database
+# from the MySQL database
+mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A -D hg19 -e 'select * from snp150' > snp150.txt
+# into a MySQL database
 gunzip -c snp150.txt.gz > snp150.txt
 (
 wget -qO- http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql
 echo load data local infile 'snp150.txt' into table snp150;
 ) > snp150.sql
-# the opposite
-mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A -D hg19 -e 'select * from snp150' > snp150.txt
 ```
-as done in [TWAS-pipeline](https://github.com/jinghuazhao/TWAS-pipeline/wiki/Building-reference-panel) on refGene.
+while [snp150.sql](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql) can also be amended,
 
 Besides standard chromosomal positions, hg38 reference genome assembly also has other categories<sup>[1](#footnote1)</sup> ,
 
