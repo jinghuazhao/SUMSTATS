@@ -30,7 +30,7 @@ sort -k3,3 > snp150.txt
 ```
 where it first obtains build 37 positions, sorts them by RSid into the file `snp150.txt`. More flexiblly, 
 we can do as in [TWAS-pipeline](https://github.com/jinghuazhao/TWAS-pipeline/wiki/Building-reference-panel)
-on refGene by electing appropriate columns,
+on refGene by selecting appropriate columns,
 ```bash
 # from the MySQL database
 mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A -D hg19 -e 'select * from snp150' > snp150.txt
