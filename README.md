@@ -41,7 +41,19 @@ wget -qO- http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql
 echo load data local infile 'snp150.txt' into table snp150;
 ) > snp150.sql
 ```
-while [snp150.sql](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql) is amended,
+while [snp150.sql](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql) is amended. The option -A on the MysQL command line makes it faster and -D specifies database.
+More generally, it is possible to use MySQL interactively,
+```bash
+mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A <<END
+show databases;
+use hg19;
+show tables;
+describe snp150;
+select * from snp150 LIMIT 1,30;
+select chrom, chromStart, chromEnd, strand, name, refNCBI, observed from snp150 WHERE name="rs548419688";
+END
+```
+which illustrate some useful commands.
 
 Besides standard chromosomal positions, hg38 reference genome assembly also has other categories<sup>[1](#footnote1)</sup> ,
 
