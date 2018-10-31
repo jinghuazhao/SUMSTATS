@@ -41,7 +41,7 @@ wget -qO- http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql
 echo load data local infile 'snp150.txt' into table snp150;
 ) > snp150.sql
 ```
-while [snp150.sql](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql) can also be amended,
+while [snp150.sql](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql) is amended,
 
 Besides standard chromosomal positions, hg38 reference genome assembly also has other categories<sup>[1](#footnote1)</sup> ,
 
