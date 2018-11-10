@@ -55,7 +55,14 @@ END
 ```
 which illustrate some useful commands.
 
-Besides standard chromosomal positions, hg38 reference genome assembly also has other categories<sup>[1](#footnote1)</sup> ,
+Lastly, it may be useful to generate a rsid -- SNPID (chromosome:position_allele1_allele2 such that allele1<allele2). Assuming that our download is compressed format, this can be achieved as follows,
+```bash
+gunzip -c snp150.txt.gz | \
+cut -f2,4,5,10 | \
+awk '{split($4,a,"/");if(a[1]!="-"&&a[2]!="-") print $1 ":" $2 "_" a[1] "_" a[2], $3}' > snp150.snpid_rsid
+```
+
+Besides standard chromosomal positions, hg38 reference genome assembly also has other categories<sup>[1](#footnote1)</sup>,
 
 > * **Random contigs** (e.g., chrY_KI270740v1_random). Unlocalized sequences that are known to originate from specic chromosomes, but whose exact location within the chromosomes is not known (e.g., chr9_KI270720v1_random).
 
