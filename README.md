@@ -59,7 +59,7 @@ Lastly, it may be useful to generate a rsid -- snpid (chromosome:position_allele
 ```bash
 gunzip -c snp150.txt.gz | \
 cut -f2,4,5,10 | \
-awk '{split($4,a,"/");if(a[1]!="-"&&a[2]!="-") print $1 ":" $2 "_" a[1] "_" a[2], $3}' > snp150.snpid_rsid
+awk '/^chr[0-9][0-9]$/{split($4,a,"/");if(a[1]!="-"&&a[2]!="-") print $1 ":" $2 "_" a[1] "_" a[2], $3}' > snp150.snpid_rsid
 ```
 
 Besides standard chromosomal positions, hg38 reference genome assembly also has other categories<sup>[1](#footnote1)</sup>,
