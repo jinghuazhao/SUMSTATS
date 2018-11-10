@@ -4,6 +4,8 @@ Description of GWAS summary statistics
 
 The repository shows how to provide input for PW-pipeline, FM-pipeline including GCTA, among others.
 
+## The summary table
+
 Briefly, the format has the following columns,
 
 Column | Name | Description
@@ -19,7 +21,11 @@ Column | Name | Description
 9*  | chr | chromosome
 10* | pos | position
 
-\* These two columns can be obtained from https://genome.ucsc.edu/, which
+\* see next section.
+
+## SNP information
+
+The chromosomes and positions can be obtained from https://genome.ucsc.edu/, which
 should be helpful for GWAS summary statistics either using chromosomal positions from different
 builds or without these at all.
 ```bash
@@ -61,7 +67,6 @@ gunzip -c snp150.txt.gz | \
 cut -f2,4,5,10 | \
 awk '/^chr[0-9]$|^chr[0-9][0-9]$|chrX|chrY/{split($4,a,"/");if(a[1]!="-"&&a[2]!="-") print $1 ":" $2 "_" a[1] "_" a[2], $3}' > snp150.snpid_rsid
 ```
-
 Besides standard chromosomal positions, hg38 reference genome assembly also has other categories<sup>[1](#footnote1)</sup>,
 
 > * **Random contigs** (e.g., chrY_KI270740v1_random). Unlocalized sequences that are known to originate from specic chromosomes, but whose exact location within the chromosomes is not known (e.g., chr9_KI270720v1_random).
