@@ -55,7 +55,7 @@ END
 ```
 which illustrate some useful commands.
 
-Lastly, it may be useful to generate a rsid -- snpid (chromosome:position_allele1_allele2 such that allele1<allele2) linkage file. Assuming that our download is compressed format, this can be achieved as follows,
+Lastly, it may be useful to generate a rsid -- snpid (chromosome:position_allele1_allele2 such that allele1<allele2) linkage file. Assuming that our download is in compressed format, this can be achieved as follows,
 ```bash
 gunzip -c snp150.txt.gz | \
 cut -f2,4,5,10 | \
