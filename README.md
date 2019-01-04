@@ -43,8 +43,8 @@ mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A -D hg19 -e 'select * fro
 # into a MySQL database
 gunzip -c snp150.txt.gz > snp150.txt
 (
-wget -qO- http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql
-echo load data local infile 'snp150.txt' into table snp150;
+  wget -qO- http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql
+  echo load data local infile 'snp150.txt' into table snp150;
 ) > snp150.sql
 ```
 while [snp150.sql](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/database/snp150.sql) is amended. The option -A on the MysQL command line makes it faster and -D specifies database.
