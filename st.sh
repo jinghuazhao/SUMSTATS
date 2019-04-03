@@ -7,5 +7,6 @@ do
    git add $d
    git commit -m "$d"
 done
-git ST3 ST4 plasmaprotein
+git add ST3 ST4 plasmaprotein
+git commit -m "Supplementary tables"
 git push
