@@ -1,4 +1,4 @@
-# 18-10-2018 JHZ
+# 3-4-2019 JHZ
 
 git add README.*
 git commit -m "README"
@@ -7,4 +7,5 @@ do
    git add $d
    git commit -m "$d"
 done
+git ST3 ST4 plasmaprotein
 git push
