@@ -192,6 +192,12 @@ write.table(ST4, file="plamsprotein", row.names=FALSE, col.names=FALSE, quote=FA
 ```
 and Supplementary Table 4 is fetched here.
 
+## Related resource
+
+A repository with specific focus on download of sumstats is as follows,
+
+https://github.com/mikegloudemans/gwas-download
+
 ## References
 
 **[GIANT](https://portals.broadinstitute.org/collaboration/giant/index.php/Main_Page)** (Genetic Investigation of ANthropometric Traits) data
