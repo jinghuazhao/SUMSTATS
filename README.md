@@ -127,6 +127,8 @@ As described elsewhere, we are rather tempted to use a distance-based approach f
   sort -k9,9n -k10,10n
 ) > bmi.dat
 R --no-save -q < bmi.R > bmi.out
+grep  -f 97.snps bmi.out | \
+wc -l
 ```
 with `bmi.R` as follows,
 ```r
@@ -143,7 +145,7 @@ for(chr in chrs)
   sentinels(ps,chr,1)
 }
 ```
-and the output is [bmi.out](bmi.out).
+and the output is [bmi.out](bmi.out). One may wonder the overlap between the two, and the answer is 69.
 
 ### T2D
 
