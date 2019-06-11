@@ -117,6 +117,34 @@ END
 ```
 The list is SNPs is contained in [97.snps](97.snps).
 
+As described elsewhere, we are rather tempted to use a distance-based approach for independent signals,
+```bash
+(
+  awk -vOFS="\t" 'BEGIN{print "MarkerName", "A1", "A2", "freq", "Effect", "StdErr", "P.value", "N", "Chrom", "End"}'
+  zcat bmi.tsv.gz | \
+  sed 's/ /\t/g' | \
+  awk '(NR>1 && $7<=2.4e-7)' | \
+  sort -k9,9n -k10,10n
+) > bmi.dat
+R --no-save -q < bmi.R > bmi.out
+```
+with `bmi.R` as follows,
+```r
+options(echo=FALSE)
+bmi <- read.delim("bmi.dat",as.is=TRUE)
+require(reshape)
+require(gap)
+chrs <- with(bmi,unique(Chrom))
+for(chr in chrs)
+{
+#  print(chr)
+  ps <- subset(bmi[c("Chrom","End","MarkerName","Effect","StdErr","P.value")],Chrom==chr)
+  row.names(ps) <- 1:nrow(ps)
+  sentinels(ps,chr,1)
+}
+```
+and the output is [bmi.out](bmi.out).
+
 ### T2D
 
 The data was reported by Scott, et al. (2017),
