@@ -145,7 +145,29 @@ for(chr in chrs)
   sentinels(ps,chr,1)
 }
 ```
-and the output is [bmi.out](bmi.out). One may wonder the overlap between the two, and the answer is 69.
+and the output is [bmi.out](bmi.out). One may wonder the overlap between the two, and the answer is 69. In this case,
+awk has no problem to handle the small P value, i.e., with
+```bash
+(
+  awk -vOFS="\t" 'BEGIN{print "MarkerName", "A1", "A2", "freq", "Effect", "StdErr", "P.value", "N", "Chrom", "End"}'
+  zcat bmi.tsv.gz | \
+  sed 's/ /\t/g' | \
+  awk '
+  function abs(x)
+  {
+    if (x < 0) return -x;
+    else return x;
+  }
+  (NR>1 && abs($5/$6)>=5.165342)' | \
+  sort -k9,9n -k10,10n
+) > bmi.dat
+
+R --no-save -q < bmi.R > bmi.out
+
+grep  -f 97.snps bmi.out | \
+wc -l
+```
+we still have 69.
 
 ### T2D
 
