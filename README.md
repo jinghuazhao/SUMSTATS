@@ -65,7 +65,7 @@ Lastly, it may be useful to generate a rsid -- snpid (chromosome:position_allele
 ```bash
 gunzip -c snp150.txt.gz | \
 cut -f2,4,5,10 | \
-awk '/^chr[0-9]$|^chr[0-9][0-9]$|chrX|chrY/{if(!index($4,"-")) {split($4,a,"/"); print $1 ":" $2 "_" a[1] "_" a[2], $3}}' | \
+awk '$1~/^chr[0-9]$|^chr[0-9][0-9]$|chrX|chrY/{if(!index($4,"-")) {split($4,a,"/"); print $1 ":" $2 "_" a[1] "_" a[2], $3}}' | \
 sort -k1,1 | \
 gzip -f > snp150.snpid_rsid.gz
 ```
