@@ -2,7 +2,7 @@
 
 Description of GWAS summary statistics
 
-The repository shows how to provide input for PW-pipeline, FM-pipeline including GCTA, among others.
+The repository shows how to provide input for PW-pipeline, FM-pipeline including GCTA, among others; it also shows how to generate SNPid-rsid pairs which would be required for consortium meta-analysis..
 
 ## The summary table
 
