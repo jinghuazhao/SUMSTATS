@@ -2,7 +2,7 @@
 
 Description of GWAS summary statistics
 
-The repository shows how to provide input for PW-pipeline, FM-pipeline including GCTA, among others; it also shows how to generate SNPid-rsid pairs which would be required for consortium meta-analysis..
+The repository shows how to provide input for PW-pipeline, FM-pipeline including GCTA, among others; it also shows how to generate SNPid-rsid pairs which would be required for consortium meta-analysis.
 
 ## The summary table
 
@@ -249,6 +249,10 @@ and Supplementary Table 4 is fetched here.
 A repository with specific focus on download of sumstats is as follows,
 
 https://github.com/mikegloudemans/gwas-download
+
+A repository to convert sumstats for downstream processing,
+
+https://github.com/MRCIEU/gwas2vcf
 
 ## References
 
