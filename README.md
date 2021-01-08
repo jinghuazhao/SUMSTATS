@@ -244,15 +244,20 @@ write.table(ST4, file="plamsprotein", row.names=FALSE, col.names=FALSE, quote=FA
 ```
 and Supplementary Table 4 is fetched here.
 
-## Related resource
+## Relations to other resources
 
 A repository with specific focus on download of sumstats is as follows,
 
 https://github.com/mikegloudemans/gwas-download
 
-A repository to convert sumstats for downstream processing,
+A repository to convert GWAS sumstats for downstream processing,
 
 https://github.com/MRCIEU/gwas2vcf
+
+The VCF files generated can be converted to the format here with command
+```bash
+bcftools query -e 'ID == "."' -f '%ID\t%ALT\t%REF\t%AF\t[%ES]\t[%SE]\t[%LP]\t[%SS]\t%CHROM\t%POS\n' my.vcf.gz > my.tsv
+```
 
 ## References
 
