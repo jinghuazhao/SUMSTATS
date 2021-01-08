@@ -246,18 +246,19 @@ and Supplementary Table 4 is fetched here.
 
 ## Relations to other resources
 
-A repository with specific focus on download of sumstats is as follows,
-
-https://github.com/mikegloudemans/gwas-download
-
-A repository to convert GWAS sumstats for downstream processing,
+One may prefer to use the following repository to convert GWAS sumstats for downstream processing,
 
 https://github.com/MRCIEU/gwas2vcf
 
 The VCF files generated can be converted to the format here with command
 ```bash
-bcftools query -f '%ID\t%ALT\t%REF\t%AF\t[%ES]\t[%SE]\t[%LP]\t[%SS]\t%CHROM\t%POS\n' my.vcf.gz > my.tsv
+bcftools query -f '%ID\t%ALT\t%REF\t%AF\t[%ES]\t[%SE]\t[%LP]\t[%SS]\t%CHROM\t%POS\n' my.vcf.gz | \
+awk -vOFS="\t" '{$7=10^-$7};1'> my.tsv
 ```
+Another repository with specific focus on download of sumstats is as follows,
+
+https://github.com/mikegloudemans/gwas-download
+
 
 ## References
 
