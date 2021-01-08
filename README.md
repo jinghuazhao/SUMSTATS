@@ -256,7 +256,7 @@ https://github.com/MRCIEU/gwas2vcf
 
 The VCF files generated can be converted to the format here with command
 ```bash
-bcftools query -e 'ID == "."' -f '%ID\t%ALT\t%REF\t%AF\t[%ES]\t[%SE]\t[%LP]\t[%SS]\t%CHROM\t%POS\n' my.vcf.gz > my.tsv
+bcftools query -f '%ID\t%ALT\t%REF\t%AF\t[%ES]\t[%SE]\t[%LP]\t[%SS]\t%CHROM\t%POS\n' my.vcf.gz > my.tsv
 ```
 
 ## References
