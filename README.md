@@ -285,9 +285,11 @@ The VCF files generated can be converted to the format here with command
 bcftools query -f '%ID\t%ALT\t%REF\t%AF\t[%ES]\t[%SE]\t[%LP]\t[%SS]\t%CHROM\t%POS\n' my.vcf.gz | \
 awk -vOFS="\t" '{$7=10^-$7};1'> my.tsv
 ```
-Another repository with specific focus on download of sumstats is as follows,
+A relatively earlier repository with specific focus on download of sumstats is as follows,
 
 https://github.com/mikegloudemans/gwas-download
+
+The OpenTargets harmoniser is available from here, https://github.com/opentargets/genetics-sumstat-harmoniser.
 
 
 ## References
