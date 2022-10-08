@@ -306,6 +306,8 @@ Scott R, et al. (2017) An Expanded Genome-Wide Association Study of Type 2 Diabe
 
 Sun BB, et al. (2018) Genomic atlas of the human plasma proteome. *Nature* 558: 73-79.
 
+GWAS catalog summary statistics API, [https://www.ebi.ac.uk/gwas/summary-statistics/docs/](https://www.ebi.ac.uk/gwas/summary-statistics/docs/)
+
 ---
 
 <a name="footnote1"><sup>1</sup></a> Robinson PN, Piro RM, Jager K (2018). [Computational Exome and Genome Analysis](https://www.crcpress.com/Computational-Exome-and-Genome-Analysis/Robinson-Piro-Jager/p/book/9781498775984), CRC.
