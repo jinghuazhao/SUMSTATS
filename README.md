@@ -289,7 +289,7 @@ A relatively earlier repository with specific focus on download of sumstats is a
 
 <https://github.com/mikegloudemans/gwas-download>
 
-The OpenTargets harmoniser is available from here,< https://github.com/opentargets/genetics-sumstat-harmoniser>.
+The OpenTargets harmoniser is available from here, <https://github.com/opentargets/genetics-sumstat-harmoniser>.
 
 
 ## References
