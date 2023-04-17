@@ -310,7 +310,7 @@ GWAS catalog summary statistics API, [https://www.ebi.ac.uk/gwas/summary-statist
 
 ---
 
-[^hg18]: Build 36, <https://hgdownload.soe.ucsc.edu/goldenPath/hg18/database/> [snp129.sql,snp129.txt.gz ]
+[^hg18]: Build 36, <https://hgdownload.soe.ucsc.edu/goldenPath/hg18/database/> (snp[126--30].sql, snp[126--30].txt.gz)
 
 
 [^hg38]: Robinson PN, Piro RM, Jager K (2018). [Computational Exome and Genome Analysis](https://www.crcpress.com/Computational-Exome-and-Genome-Analysis/Robinson-Piro-Jager/p/book/9781498775984), CRC.
