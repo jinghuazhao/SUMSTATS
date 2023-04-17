@@ -278,7 +278,7 @@ and Supplementary Table 4 is fetched here.
 
 One may prefer to use the following repository to convert GWAS sumstats for downstream processing,
 
-https://github.com/MRCIEU/gwas2vcf
+<https://github.com/MRCIEU/gwas2vcf>
 
 The VCF files generated can be converted to the format here with command
 ```bash
@@ -287,9 +287,9 @@ awk -vOFS="\t" '{$7=10^-$7};1'> my.tsv
 ```
 A relatively earlier repository with specific focus on download of sumstats is as follows,
 
-https://github.com/mikegloudemans/gwas-download
+<https://github.com/mikegloudemans/gwas-download>
 
-The OpenTargets harmoniser is available from here, https://github.com/opentargets/genetics-sumstat-harmoniser.
+The OpenTargets harmoniser is available from here,< https://github.com/opentargets/genetics-sumstat-harmoniser>.
 
 
 ## References
@@ -306,7 +306,7 @@ Scott R, et al. (2017) An Expanded Genome-Wide Association Study of Type 2 Diabe
 
 Sun BB, et al. (2018) Genomic atlas of the human plasma proteome. *Nature* 558: 73-79.
 
-GWAS catalog summary statistics API, [https://www.ebi.ac.uk/gwas/summary-statistics/docs/](https://www.ebi.ac.uk/gwas/summary-statistics/docs/)
+GWAS catalog summary statistics API, <https://www.ebi.ac.uk/gwas/summary-statistics/docs/>
 
 ---
 
