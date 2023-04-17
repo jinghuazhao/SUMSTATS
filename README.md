@@ -110,7 +110,7 @@ Besides standard chromosomal positions, hg38 reference genome assembly also has 
 
 > * **Alternate contigs** (e.g., chr3_KI270778v1_alt). Alternative sequence paths in regions with complex structural variation in the form of additional locus sequences.
 
-It might be worthwhile to check for options with the sumstats as defined in ldsc, <https://github.com/bulik/ldsc>, and particularly its munge_sumstats.py utility.
+It might be worthwhile to check for options with the sumstats as defined in ldsc, <https://github.com/bulik/ldsc>, and particularly its `munge_sumstats.py` utility.
 
 [lz.sh](lz.sh) is a script which extracts information on SNP and their positions from [LocusZoom](http://locuszoom.sph.umich.edu/) 1.4 database.
 
