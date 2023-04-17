@@ -34,7 +34,7 @@ gunzip -c snp150.txt.gz | \
 awk '{split($2,a,"_");sub(/chr/,"",a[1]);print a[1],$4,$5}' | \
 sort -k3,3 > snp150.txt
 ```
-where it first obtains build 37 positions, sorts them by RSid into the file `snp150.txt`. More flexiblly, 
+where it first obtains build 37 positions[^hg18], sorts them by RSid into the file `snp150.txt`. More flexiblly, 
 we can do as in [TWAS-pipeline](https://github.com/jinghuazhao/TWAS-pipeline/wiki/Building-reference-panel)
 on refGene by selecting appropriate columns,
 ```bash
@@ -96,7 +96,7 @@ awk '$1~/^chr[0-9]+$|^chrX$|^chrY$/{if(!index($4,"-")) {split($4,a,"/"); print $
 sort -k1,1 | \
 gzip -f > snp150.snpid_rsid.gz
 ```
-Besides standard chromosomal positions, hg38 reference genome assembly also has other categories<sup>[1](#footnote1)</sup>,
+Besides standard chromosomal positions, hg38 reference genome assembly also has other categories[^hg38]>,
 
 > * **Random contigs** (e.g., chrY_KI270740v1_random). Unlocalized sequences that are known to originate from specic chromosomes, but whose exact location within the chromosomes is not known (e.g., chr9_KI270720v1_random).
 
@@ -310,4 +310,7 @@ GWAS catalog summary statistics API, [https://www.ebi.ac.uk/gwas/summary-statist
 
 ---
 
-<a name="footnote1"><sup>1</sup></a> Robinson PN, Piro RM, Jager K (2018). [Computational Exome and Genome Analysis](https://www.crcpress.com/Computational-Exome-and-Genome-Analysis/Robinson-Piro-Jager/p/book/9781498775984), CRC.
+[^hg18]: Build 36, <https://hgdownload.soe.ucsc.edu/goldenPath/hg18/database/> [snp129.sql,snp129.txt.gz ]
+
+
+[^hg38]: Robinson PN, Piro RM, Jager K (2018). [Computational Exome and Genome Analysis](https://www.crcpress.com/Computational-Exome-and-Genome-Analysis/Robinson-Piro-Jager/p/book/9781498775984), CRC.
