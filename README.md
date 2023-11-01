@@ -291,6 +291,7 @@ A relatively earlier repository with specific focus on download of sumstats is a
 
 The OpenTargets harmoniser is available from here, <https://github.com/opentargets/genetics-sumstat-harmoniser>.
 
+UCSC FAQ on data file formats, <https://genome.ucsc.edu/FAQ/FAQformat.html>
 
 ## References
 
