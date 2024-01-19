@@ -133,8 +133,6 @@ of January 2022, here are the genomic accession numbers for the human chromosome
 
 Note: The "NC_" prefix stands for "nucleotide accession" and is part of the standard naming convention used in genomics databases.
 
-Please verify with the latest databases or genome assemblies, as these accession numbers may be updated over time.
-
 ### hg38 reference genome assembly
 
 Besides standard chromosomal positions, it also has other categories[^hg38],
@@ -167,6 +165,8 @@ awk '$1~/^chr[0-9]+$|^chrX$|^chrY$/{if(!index($4,"-")) {split($4,a,"/"); print $
 sort -k1,1 | \
 gzip -f > snp150.snpid_rsid.gz
 ```
+
+As for the dbSNP download, one can work on the output from `bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT[\t%SAMPLE=%GT]\n' snp154_GCF_000001405.38.gz`.
 
 ## Examples
 
