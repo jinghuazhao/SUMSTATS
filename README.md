@@ -67,11 +67,9 @@ To use the latest dbSNP information, these steps can be helpful,
 # wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.25.gz -O snp154_GCF_000001405.25.gz
 # wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.25.gz.tbi -O snp154_GCF_000001405.25.gz.tbi
 gunzip -c snp154_GCF_000001405.25.gz > snp154_GCF_000001405.25
-# alias file for chomosomes
-# https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/chromToUcsc
 
-# One can carry on with the familiar chr1, ..., etc.
-# https://github.com/vkkodali/cthreepo
+source ~/rds/public_databases/software/py38/bin/activate
+
 cthreepo \
     --infile snp154_GCF_000001405.25 \
     --id_from rs \
@@ -81,12 +79,18 @@ cthreepo \
     --outfile snp154_hg19.vcf
 
 bgzip -f snp154_hg19.vcf
-tabix -f snp154_hg19.vcf.gz
+tabix -p vcf -f snp154_hg19.vcf.gz
+
+# tabix -S38 -s1 -b2 -e2 -f snp154_hg19.vcf.gz
 
 # hg38
-cthreepo --infile snp154_GCF_000001405.38 --id_from rs --id_to uc --format vcf --mapfile h38 --outfile snp154_hg38.vcf
+# https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.38
+module load ceuadmin/tabix/1.19
+cthreepo --infile snp154_GCF_000001405.38.txt --id_from rs --id_to uc --format vcf --mapfile h38 --outfile snp154_hg38.vcf
 bgzip -f snp154_hg38.vcf
-tabix -f snp154_hg38.vcf.gz
+tabix -p vcf -f snp154_hg38.vcf.gz
+
+# tabix -S38 -s1 -b2 -e2 -f snp154_hg38.vcf.gz
 ```
 Lastly, it may be useful to generate a rsid -- SNPid (chromosome:position_allele1_allele2 such that allele1 \< allele2) linkage file. Assuming that our download is in compressed format, this can be achieved as follows,
 ```bash
