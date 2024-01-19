@@ -137,7 +137,9 @@ Please verify with the latest databases or genome assemblies, as these accession
 
 ### hg38 reference genome assembly
 
-Besides standard chromosomal positions, it also has other categories[^hg38]>,
+Besides standard chromosomal positions, it also has other categories[^hg38],
+
+>
 
 > * **Random contigs** (e.g., chrY_KI270740v1_random). Unlocalized sequences that are known to originate from specic chromosomes, but whose exact location within the chromosomes is not known (e.g., chr9_KI270720v1_random).
 
