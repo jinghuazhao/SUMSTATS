@@ -2,7 +2,7 @@
 
 ## Description of GWAS summary statistics
 
-The repository shows how to provide input for PW-pipeline, FM-pipeline including GCTA, among others; it also shows how to generate SNPid-rsid pairs which would be required for consortium meta-analysis.
+The repository shows how to provide input for PW-pipeline, FM-pipeline including GCTA, among others; it also shows how to generate SNPid-RSid pairs which would be required for consortium meta-analysis.
 
 ## The summary table
 
@@ -135,17 +135,9 @@ Note: The "NC_" prefix stands for "nucleotide accession" and is part of the stan
 
 Please verify with the latest databases or genome assemblies, as these accession numbers may be updated over time.
 
-### rsid -- SNPid
+### hg38 reference genome assembly
 
-The rsid -- SNPid (chromosome:position_allele1_allele2 such that allele1 \< allele2) pairing can be achieved as follows,
-```bash
-gunzip -c snp150.txt.gz | \
-cut -f2,4,5,10 | \
-awk '$1~/^chr[0-9]+$|^chrX$|^chrY$/{if(!index($4,"-")) {split($4,a,"/"); print $1 ":" $2 "_" a[1] "_" a[2], $3}}' | \
-sort -k1,1 | \
-gzip -f > snp150.snpid_rsid.gz
-```
-Besides standard chromosomal positions, hg38 reference genome assembly also has other categories[^hg38]>,
+Besides standard chromosomal positions, it also has other categories[^hg38]>,
 
 > * **Random contigs** (e.g., chrY_KI270740v1_random). Unlocalized sequences that are known to originate from specic chromosomes, but whose exact location within the chromosomes is not known (e.g., chr9_KI270720v1_random).
 
@@ -162,6 +154,17 @@ Besides standard chromosomal positions, hg38 reference genome assembly also has 
 It might be worthwhile to check for options with the sumstats as defined in ldsc, <https://github.com/bulik/ldsc>, and particularly its `munge_sumstats.py` utility.
 
 [lz.sh](lz.sh) is a script which extracts information on SNP and their positions from [LocusZoom](http://locuszoom.sph.umich.edu/) 1.4 database.
+
+### RSid -- SNPid
+
+The RSid -- SNPid (chromosome:position_allele1_allele2 such that allele1 \< allele2) pairing can be achieved as follows,
+```bash
+gunzip -c snp150.txt.gz | \
+cut -f2,4,5,10 | \
+awk '$1~/^chr[0-9]+$|^chrX$|^chrY$/{if(!index($4,"-")) {split($4,a,"/"); print $1 ":" $2 "_" a[1] "_" a[2], $3}}' | \
+sort -k1,1 | \
+gzip -f > snp150.snpid_rsid.gz
+```
 
 ## Examples
 
