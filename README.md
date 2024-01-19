@@ -86,7 +86,7 @@ tabix -p vcf -f snp154_hg19.vcf.gz
 
 # hg38
 # https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.38
-module load ceuadmin/tabix/1.19
+module load ceuadmin/htslib/1.19
 cthreepo --infile snp154_GCF_000001405.38 --id_from rs --id_to uc --format vcf --mapfile h38 --outfile snp154_hg38.vcf
 bgzip -f snp154_hg38.vcf
 tabix -p vcf -f snp154_hg38.vcf.gz
