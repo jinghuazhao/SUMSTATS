@@ -25,6 +25,8 @@ Column | Name | Description
 
 ## SNP information
 
+### UCSC
+
 The chromosomes and positions can be obtained from <https://genome.ucsc.edu/>, which
 should be helpful for GWAS summary statistics either using chromosomal positions from different
 builds or without these at all.
@@ -61,6 +63,8 @@ END
 ```
 which illustrate some useful commands.
 
+### dbSNP
+
 To use the latest dbSNP information, these steps can be helpful,
 ```bash
 # hg19
@@ -93,7 +97,47 @@ tabix -p vcf -f snp154_hg38.vcf.gz
 
 # tabix -S38 -s1 -b2 -e2 -f snp154_hg38.vcf.gz
 ```
-Lastly, it may be useful to generate a rsid -- SNPid (chromosome:position_allele1_allele2 such that allele1 \< allele2) linkage file. Assuming that our download is in compressed format, this can be achieved as follows,
+
+### Genomic accession numbers (GAN)
+
+The information is contained for instance in `snp154_GCF_000001405.38` above.
+
+It refer to the reference sequences for each chromosome. These sequences are often part of databases such as GenBank or the Genome Reference Consortium (GRC). As 
+of January 2022, here are the genomic accession numbers for the human chromosomes:
+
+  Chromosome    | GAN
+  --------------|--------------
+  Chromosome 1: | NC_000001.11
+  Chromosome 2: | NC_000002.12
+  Chromosome 3: | NC_000003.12
+  Chromosome 4: | NC_000004.12
+  Chromosome 5: | NC_000005.10
+  Chromosome 6: | NC_000006.12
+  Chromosome 7: | NC_000007.14
+  Chromosome 8: | NC_000008.11
+  Chromosome 9:  | NC_000009.12
+  Chromosome 10: | NC_000010.11
+  Chromosome 11: | NC_000011.10
+  Chromosome 12: | NC_000012.12
+  Chromosome 13: | NC_000013.11
+  Chromosome 14: | NC_000014.9
+  Chromosome 15: | NC_000015.10
+  Chromosome 16: | NC_000016.10
+  Chromosome 17: | NC_000017.11
+  Chromosome 18: | NC_000018.10
+  Chromosome 19: | NC_000019.10
+  Chromosome 20: | NC_000020.11
+  Chromosome 21: | NC_000021.9
+  Chromosome X: | NC_000023.11
+  Chromosome Y: | NC_000024.10
+
+Note: The "NC_" prefix stands for "nucleotide accession" and is part of the standard naming convention used in genomics databases.
+
+Please verify with the latest databases or genome assemblies, as these accession numbers may be updated over time.
+
+### rsid -- SNPid
+
+The rsid -- SNPid (chromosome:position_allele1_allele2 such that allele1 \< allele2) pairing can be achieved as follows,
 ```bash
 gunzip -c snp150.txt.gz | \
 cut -f2,4,5,10 | \
