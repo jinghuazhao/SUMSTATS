@@ -65,48 +65,38 @@ which illustrate some useful commands.
 
 ### dbSNP
 
-To use the latest dbSNP information, these steps can be helpful,
+The script below download SNP154, replacing Genomic accession numbers (GANs) with familiar chromosome names via ctreepo, <https://github.com/vkkodali/cthreepo> and tabix[^tabix].
+
 ```bash
+module load ceuadmin/htslib/1.19
+source ~/rds/public_databases/software/py38/bin/activate
+pip install cthreepo
+
 # hg19
-# wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.25.gz -O snp154_GCF_000001405.25.gz
-# wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.25.gz.tbi -O snp154_GCF_000001405.25.gz.tbi
+wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.25.gz -O snp154_GCF_000001405.25.gz
+wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.25.gz.tbi -O snp154_GCF_000001405.25.gz.tbi
 gunzip -c snp154_GCF_000001405.25.gz > snp154_GCF_000001405.25
 
-source ~/rds/public_databases/software/py38/bin/activate
-# pip install cthreepo
-# Upon installation of cthreepo from
-# https://github.com/vkkodali/cthreepo
-# One can carry on with the familiar chr1, ..., etc.
-
-cthreepo \
-    --infile snp154_GCF_000001405.25 \
-    --id_from rs \
-    --id_to uc \
-    --format vcf \
-    --mapfile h37 \
-    --outfile snp154_hg19.vcf
-
+cthreepo --infile snp154_GCF_000001405.25 --id_from rs --id_to uc --format vcf --mapfile h37 --outfile snp154_hg19.vcf
 bgzip -f snp154_hg19.vcf
 tabix -p vcf -f snp154_hg19.vcf.gz
-# Alternatively,
-# tabix -S38 -s1 -b2 -e2 -f snp154_hg19.vcf.gz
 
 # hg38
-# https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.38
-module load ceuadmin/htslib/1.19
+wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.38.gz -O snp154_GCF_000001405.38.gz
+wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.38.gz.tbi -O snp154_GCF_000001405.38.gz.tbi
+gunzip -c snp154_GCF_000001405.38.gz > snp154_GCF_000001405.38
+
 cthreepo --infile snp154_GCF_000001405.38 --id_from rs --id_to uc --format vcf --mapfile h38 --outfile snp154_hg38.vcf
 bgzip -f snp154_hg38.vcf
 tabix -p vcf -f snp154_hg38.vcf.gz
-# Alternatively,
-# tabix -S38 -s1 -b2 -e2 -f snp154_hg38.vcf.gz
 ```
 
-### Genomic accession numbers (GAN)
+### GAN
 
-The information is contained for instance in `snp154_GCF_000001405.38` above.
+It refers to the reference sequences for each chromosome, often part of databases such as GenBank or the Genome Reference Consortium (GRC).
+The information is available for instance in `snp154_GCF_000001405.*` above.
 
-It refer to the reference sequences for each chromosome. These sequences are often part of databases such as GenBank or the Genome Reference Consortium (GRC). As 
-of January 2022, here they are:
+As of January 2022, the definitions are:
 
   Chromosome    | GAN
   --------------|--------------
@@ -169,7 +159,7 @@ As for the dbSNP download, one can work on the output from
 
 `bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT[\t%SAMPLE=%GT]\n' snp154_GCF_000001405.38.gz`
 
-replacing GANs with familiar chromosome names as above by `cthreepo`.
+using familiar chromosome names as above by `cthreepo`.
 
 ## Examples
 
@@ -374,5 +364,12 @@ GWAS catalog summary statistics API, <https://www.ebi.ac.uk/gwas/summary-statist
 
 [^hg18]: Build 36, <https://hgdownload.soe.ucsc.edu/goldenPath/hg18/database/> (snp[126--30].sql, snp[126--30].txt.gz)
 
+
+[^tabix]: Alternatively, tabix can also be used as
+
+```bash
+tabix -S38 -s1 -b2 -e2 -f snp154_hg19.vcf.gz
+tabix -S38 -s1 -b2 -e2 -f snp154_hg38.vcf.gz
+```
 
 [^hg38]: Robinson PN, Piro RM, Jager K (2018). [Computational Exome and Genome Analysis](https://www.crcpress.com/Computational-Exome-and-Genome-Analysis/Robinson-Piro-Jager/p/book/9781498775984), CRC.
