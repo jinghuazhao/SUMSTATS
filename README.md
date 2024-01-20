@@ -367,9 +367,9 @@ GWAS catalog summary statistics API, <https://www.ebi.ac.uk/gwas/summary-statist
 
 [^tabix]: Alternatively, tabix can also be used as
 
-```bash
-tabix -S38 -s1 -b2 -e2 -f snp154_hg19.vcf.gz
-tabix -S38 -s1 -b2 -e2 -f snp154_hg38.vcf.gz
-```
+    ```bash
+    tabix -S38 -s1 -b2 -e2 -f snp154_hg19.vcf.gz
+    tabix -S38 -s1 -b2 -e2 -f snp154_hg38.vcf.gz
+    ```
 
 [^hg38]: Robinson PN, Piro RM, Jager K (2018). [Computational Exome and Genome Analysis](https://www.crcpress.com/Computational-Exome-and-Genome-Analysis/Robinson-Piro-Jager/p/book/9781498775984), CRC.
