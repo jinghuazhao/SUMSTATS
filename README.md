@@ -161,7 +161,7 @@ As for the dbSNP download, one can work on the output from query, i.e.,
 bgzip -f snp154_GCF_000001405.25
 tabix -p vcf snp154_GCF_000001405.25.gz
 bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT[\t%SAMPLE=%GT]\n' snp154_GCF_000001405.25.gz | \
-awk '{gsub(/NC_||\.[0-9]+/,"",$1);print $3,$1+0":"$2":"$4":"$5}'
+awk '{gsub(/NC_|\.[0-9]+/,"",$1);print $3,$1+0":"$2":"$4":"$5}'
 ```
 
 It is also handy to use `-r NC_000001.10:10001` in the bcftools query for a specific region.
