@@ -154,10 +154,6 @@ Besides standard chromosomal positions, it also has other categories[^hg38],
 
 > * **Alternate contigs** (e.g., chr3_KI270778v1_alt). Alternative sequence paths in regions with complex structural variation in the form of additional locus sequences.
 
-It might be worthwhile to check for options with the sumstats as defined in ldsc, <https://github.com/bulik/ldsc>, and particularly its `munge_sumstats.py` utility.
-
-[lz.sh](lz.sh) is a script which extracts information on SNP and their positions from [LocusZoom](http://locuszoom.sph.umich.edu/) 1.4 database.
-
 ### RSid -- SNPid pairing
 
 The RSid -- SNPid (chromosome:position_allele1_allele2 such that allele1 \< allele2) pairing can be achieved as follows,
@@ -336,6 +332,10 @@ and Supplementary Table 4 is fetched here.
 
 
 ## Relations to other resources
+
+[lz.sh](lz.sh) is a script which extracts information on SNP and their positions from [LocusZoom](http://locuszoom.sph.umich.edu/) 1.4 database.
+
+It might be worthwhile to check for options with the sumstats as defined in ldsc, <https://github.com/bulik/ldsc>, and particularly its `munge_sumstats.py` utility.
 
 One may prefer to use the following repository to convert GWAS sumstats for downstream processing,
 
