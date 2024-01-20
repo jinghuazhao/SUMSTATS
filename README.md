@@ -65,7 +65,7 @@ which illustrate some useful commands.
 
 ### dbSNP
 
-The script below download SNP154, replacing Genomic accession numbers (GANs) with familiar chromosome names via ctreepo, <https://github.com/vkkodali/cthreepo> and tabix[^tabix].
+The script below downloads SNP154, replacing Genomic accession numbers (GANs) with familiar chromosome names via ctreepo, <https://github.com/vkkodali/cthreepo> and indexing the output via tabix[^tabix].
 
 ```bash
 module load ceuadmin/htslib/1.19
