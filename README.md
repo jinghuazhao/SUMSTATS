@@ -73,18 +73,14 @@ source ~/rds/public_databases/software/py38/bin/activate
 pip install cthreepo
 
 # hg19
-wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.25.gz -O snp154_GCF_000001405.25.gz
-wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.25.gz.tbi -O snp154_GCF_000001405.25.gz.tbi
-gunzip -c snp154_GCF_000001405.25.gz > snp154_GCF_000001405.25
+wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.25 -O snp154_GCF_000001405.25
 
 cthreepo --infile snp154_GCF_000001405.25 --id_from rs --id_to uc --format vcf --mapfile h37 --outfile snp154_hg19.vcf
 bgzip -f snp154_hg19.vcf
 tabix -p vcf -f snp154_hg19.vcf.gz
 
 # hg38
-wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.38.gz -O snp154_GCF_000001405.38.gz
-wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.38.gz.tbi -O snp154_GCF_000001405.38.gz.tbi
-gunzip -c snp154_GCF_000001405.38.gz > snp154_GCF_000001405.38
+wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.38 -O snp154_GCF_000001405.38
 
 cthreepo --infile snp154_GCF_000001405.38 --id_from rs --id_to uc --format vcf --mapfile h38 --outfile snp154_hg38.vcf
 bgzip -f snp154_hg38.vcf
@@ -124,7 +120,9 @@ As of January 2022, the definitions are:
    X | NC_000023.11
    Y | NC_000024.10
 
-Note: The "NC_" prefix stands for "nucleotide accession" and is part of the standard naming convention used in genomics databases.
+The "NC_" prefix stands for "nucleotide accession" and is part of the standard naming convention used in genomics databases.
+
+An observation can be made such that the chromosome number in column 1 corresponds to the middle field between the _ and . delimiters in column 2 so would be extracted with `awk -F'[._]' '{print $2+0}'`.
 
 ### hg38 reference genome assembly
 
@@ -146,6 +144,8 @@ Besides standard chromosomal positions, it also has other categories[^hg38],
 
 ### RSid -- SNPid pairing
 
+For the UCSC download,
+
 The RSid -- SNPid (chromosome:position_allele1_allele2 such that allele1 \< allele2) pairing can be achieved as follows,
 ```bash
 gunzip -c snp150.txt.gz | \
@@ -155,11 +155,16 @@ sort -k1,1 | \
 gzip -f > snp150.snpid_rsid.gz
 ```
 
-As for the dbSNP download, one can work on the output from
+As for the dbSNP download, one can work on the output from query, i.e.,
 
-`bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT[\t%SAMPLE=%GT]\n' snp154_GCF_000001405.38.gz`
+```bash
+bgzip -f snp154_GCF_000001405.25
+tabix -p vcf snp154_GCF_000001405.25.gz
+bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT[\t%SAMPLE=%GT]\n' snp154_GCF_000001405.25.gz | \
+awk '{gsub(/NC_||\.[0-9]+/,"",$1);print $3,$1+0":"$2":"$4":"$5}'
+```
 
-using familiar chromosome names as above.
+It is also handy to use `-r NC_000001.10:10001` in the bcftools query for a specific region.
 
 ## Examples
 
