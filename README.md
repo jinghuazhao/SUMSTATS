@@ -98,31 +98,31 @@ The information is available for instance in `snp154_GCF_000001405.*` above.
 
 As of January 2022, the definitions are:
 
-  Chromosome    | GAN
-  --------------|--------------
-  Chromosome 1 | NC_000001.11
-  Chromosome 2 | NC_000002.12
-  Chromosome 3 | NC_000003.12
-  Chromosome 4 | NC_000004.12
-  Chromosome 5 | NC_000005.10
-  Chromosome 6 | NC_000006.12
-  Chromosome 7 | NC_000007.14
-  Chromosome 8 | NC_000008.11
-  Chromosome 9  | NC_000009.12
-  Chromosome 10 | NC_000010.11
-  Chromosome 11 | NC_000011.10
-  Chromosome 12 | NC_000012.12
-  Chromosome 13 | NC_000013.11
-  Chromosome 14 | NC_000014.9
-  Chromosome 15 | NC_000015.10
-  Chromosome 16 | NC_000016.10
-  Chromosome 17 | NC_000017.11
-  Chromosome 18 | NC_000018.10
-  Chromosome 19 | NC_000019.10
-  Chromosome 20 | NC_000020.11
-  Chromosome 21 | NC_000021.9
-  Chromosome X | NC_000023.11
-  Chromosome Y | NC_000024.10
+  Chromosome | GAN
+  -----------|-------
+   1 | NC_000001.11
+   2 | NC_000002.12
+   3 | NC_000003.12
+   4 | NC_000004.12
+   5 | NC_000005.10
+   6 | NC_000006.12
+   7 | NC_000007.14
+   8 | NC_000008.11
+   9 | NC_000009.12
+  10 | NC_000010.11
+  11 | NC_000011.10
+  12 | NC_000012.12
+  13 | NC_000013.11
+  14 | NC_000014.9
+  15 | NC_000015.10
+  16 | NC_000016.10
+  17 | NC_000017.11
+  18 | NC_000018.10
+  19 | NC_000019.10
+  20 | NC_000020.11
+  21 | NC_000021.9
+   X | NC_000023.11
+   Y | NC_000024.10
 
 Note: The "NC_" prefix stands for "nucleotide accession" and is part of the standard naming convention used in genomics databases.
 
