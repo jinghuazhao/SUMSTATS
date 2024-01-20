@@ -71,9 +71,12 @@ To use the latest dbSNP information, these steps can be helpful,
 # wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.25.gz -O snp154_GCF_000001405.25.gz
 # wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.25.gz.tbi -O snp154_GCF_000001405.25.gz.tbi
 gunzip -c snp154_GCF_000001405.25.gz > snp154_GCF_000001405.25
-# One can carry on with the familiar chr1, ..., etc.
-# https://github.com/vkkodali/cthreepo
+
 source ~/rds/public_databases/software/py38/bin/activate
+# pip install cthreepo
+# Upon installation of cthreepo from
+# https://github.com/vkkodali/cthreepo
+# One can carry on with the familiar chr1, ..., etc.
 
 cthreepo \
     --infile snp154_GCF_000001405.25 \
@@ -85,7 +88,7 @@ cthreepo \
 
 bgzip -f snp154_hg19.vcf
 tabix -p vcf -f snp154_hg19.vcf.gz
-
+# Alternatively,
 # tabix -S38 -s1 -b2 -e2 -f snp154_hg19.vcf.gz
 
 # hg38
@@ -94,7 +97,7 @@ module load ceuadmin/htslib/1.19
 cthreepo --infile snp154_GCF_000001405.38 --id_from rs --id_to uc --format vcf --mapfile h38 --outfile snp154_hg38.vcf
 bgzip -f snp154_hg38.vcf
 tabix -p vcf -f snp154_hg38.vcf.gz
-
+# Alternatively,
 # tabix -S38 -s1 -b2 -e2 -f snp154_hg38.vcf.gz
 ```
 
@@ -103,7 +106,7 @@ tabix -p vcf -f snp154_hg38.vcf.gz
 The information is contained for instance in `snp154_GCF_000001405.38` above.
 
 It refer to the reference sequences for each chromosome. These sequences are often part of databases such as GenBank or the Genome Reference Consortium (GRC). As 
-of January 2022, here are the genomic accession numbers for the human chromosomes:
+of January 2022, here they are:
 
   Chromosome    | GAN
   --------------|--------------
@@ -155,7 +158,7 @@ It might be worthwhile to check for options with the sumstats as defined in ldsc
 
 [lz.sh](lz.sh) is a script which extracts information on SNP and their positions from [LocusZoom](http://locuszoom.sph.umich.edu/) 1.4 database.
 
-### RSid -- SNPid
+### RSid -- SNPid pairing
 
 The RSid -- SNPid (chromosome:position_allele1_allele2 such that allele1 \< allele2) pairing can be achieved as follows,
 ```bash
@@ -166,7 +169,11 @@ sort -k1,1 | \
 gzip -f > snp150.snpid_rsid.gz
 ```
 
-As for the dbSNP download, one can work on the output from `bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT[\t%SAMPLE=%GT]\n' snp154_GCF_000001405.38.gz`.
+As for the dbSNP download, one can work on the output from
+
+`bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT[\t%SAMPLE=%GT]\n' snp154_GCF_000001405.38.gz`
+
+replacing GANs with familiar chromosome names as above by `cthreepo`.
 
 ## Examples
 
