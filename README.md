@@ -171,7 +171,7 @@ Besides standard chromosomal positions, it also has other categories[^hg38],
 
 ## Examples
 
-These are only for illustrative purpose, as it may be preferable to use full GWAS summary statistics in the case of T2D and proteogenomic example.
+These are only for illustrative purpose, as it may be preferable to use full GWAS summary statistics in the case of T2D and proteogenomic examples.
 
 ### BMI
 
