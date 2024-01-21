@@ -77,7 +77,8 @@ gzip -f > snp150.snpid_rsid.gz
 The script below downloads SNP154, replacing Genomic accession numbers (GANs) with familiar chromosome names via ctreepo, <https://github.com/vkkodali/cthreepo> and indexing the output via tabix[^tabix].
 
 ```bash
-module load ceuadmin/htslib/1.19
+module load ceuadmin/bcftools
+module load ceuadmin/htslib
 source ~/rds/public_databases/software/py38/bin/activate
 pip install cthreepo
 
