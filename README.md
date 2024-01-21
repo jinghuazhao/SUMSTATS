@@ -63,6 +63,15 @@ END
 ```
 which illustrate some useful commands.
 
+The RSid -- SNPid (chromosome:position_allele1_allele2 such that allele1 \< allele2) pairing can be achieved as follows,
+```bash
+gunzip -c snp150.txt.gz | \
+cut -f2,4,5,10 | \
+awk '$1~/^chr[0-9]+$|^chrX$|^chrY$/{if(!index($4,"-")) {split($4,a,"/"); print $1 ":" $2 "_" a[1] "_" a[2], $3}}' | \
+sort -k1,1 | \
+gzip -f > snp150.snpid_rsid.gz
+```
+
 ### dbSNP
 
 The script below downloads SNP154, replacing Genomic accession numbers (GANs) with familiar chromosome names via ctreepo, <https://github.com/vkkodali/cthreepo> and indexing the output via tabix[^tabix].
@@ -122,7 +131,18 @@ As of January 2022, the definitions are:
 
 The "NC_" prefix stands for "nucleotide accession" and is part of the standard naming convention used in genomics databases.
 
-An observation can be made such that the chromosome number in column 1 corresponds to the middle field between the _ and . delimiters in column 2 so would be extracted with `awk -F'[._]' '{print $2+0}'`.
+An observation can be made such that the chromosome number in column 1 corresponds to the middle field between the _ and . delimiters in column 2 so would be extracted with `awk -F'[._]' '{print $2+0}'` but as a column in a file requires different handling (below).
+
+The counterpart for RSid -- SNPid pairing can be furnished as follows,
+
+```bash
+bgzip -f snp154_GCF_000001405.25
+tabix -p vcf snp154_GCF_000001405.25.gz
+bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT[\t%SAMPLE=%GT]\n' snp154_GCF_000001405.25.gz | \
+awk '{gsub(/NC_[0]+|\.[0-9]+/,"",$1);print $3,$1":"$2":"$4":"$5}'
+```
+
+It is also handy to append `-r NC_000001.10:10001` in the bcftools query for a specific region.
 
 ### hg38 reference genome assembly
 
@@ -142,31 +162,9 @@ Besides standard chromosomal positions, it also has other categories[^hg38],
 
 > * **Alternate contigs** (e.g., chr3_KI270778v1_alt). Alternative sequence paths in regions with complex structural variation in the form of additional locus sequences.
 
-### RSid -- SNPid pairing
-
-For the UCSC download,
-
-The RSid -- SNPid (chromosome:position_allele1_allele2 such that allele1 \< allele2) pairing can be achieved as follows,
-```bash
-gunzip -c snp150.txt.gz | \
-cut -f2,4,5,10 | \
-awk '$1~/^chr[0-9]+$|^chrX$|^chrY$/{if(!index($4,"-")) {split($4,a,"/"); print $1 ":" $2 "_" a[1] "_" a[2], $3}}' | \
-sort -k1,1 | \
-gzip -f > snp150.snpid_rsid.gz
-```
-
-As for the dbSNP download, one can work on the output from query, i.e.,
-
-```bash
-bgzip -f snp154_GCF_000001405.25
-tabix -p vcf snp154_GCF_000001405.25.gz
-bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT[\t%SAMPLE=%GT]\n' snp154_GCF_000001405.25.gz | \
-awk '{gsub(/NC_|\.[0-9]+/,"",$1);print $3,$1+0":"$2":"$4":"$5}'
-```
-
-It is also handy to use `-r NC_000001.10:10001` in the bcftools query for a specific region.
-
 ## Examples
+
+These are only for illustrative purpose, as it may be preferable to use full GWAS summary statistics in the case of T2D and proteogenomic example.
 
 ### BMI
 
