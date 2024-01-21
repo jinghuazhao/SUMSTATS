@@ -95,6 +95,12 @@ wget https://ftp.ncbi.nih.gov/snp/archive/b154/VCF/GCF_000001405.38 -O snp154_GC
 cthreepo --infile snp154_GCF_000001405.38 --id_from rs --id_to uc --format vcf --mapfile h38 --outfile snp154_hg38.vcf
 bgzip -f snp154_hg38.vcf
 tabix -p vcf -f snp154_hg38.vcf.gz
+
+# index snp154_GCF.*
+bgzip -f snp154_GCF_000001405.25
+tabix -p vcf snp154_GCF_000001405.25.gz
+bgzip -f snp154_GCF_000001405.38
+tabix -p vcf snp154_GCF_000001405.38.gz
 ```
 
 ### GAN
@@ -137,8 +143,6 @@ An observation can be made such that the chromosome number in column 1 correspon
 The counterpart for RSid -- SNPid pairing can be furnished as follows,
 
 ```bash
-bgzip -f snp154_GCF_000001405.25
-tabix -p vcf snp154_GCF_000001405.25.gz
 bcftools query -f '%CHROM\t%POS\t%ID\t%REF\t%ALT[\t%SAMPLE=%GT]\n' snp154_GCF_000001405.25.gz | \
 awk '{gsub(/NC_[0]+|\.[0-9]+/,"",$1);print $3,$1":"$2":"$4":"$5}'
 ```
