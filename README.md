@@ -25,6 +25,8 @@ Column | Name | Description
 
 ## SNP information
 
+It is a personal choice to use either UCSC or dbSNP.
+
 ### UCSC
 
 The chromosomes and positions can be obtained from <https://genome.ucsc.edu/>, which
