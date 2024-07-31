@@ -345,6 +345,9 @@ The VCF files generated can be converted to the format here with command
 bcftools query -f '%ID\t%ALT\t%REF\t%AF\t[%ES]\t[%SE]\t[%LP]\t[%SS]\t%CHROM\t%POS\n' my.vcf.gz | \
 awk -vOFS="\t" '{$7=10^-$7};1'> my.tsv
 ```
+
+The software suite now has its own liftover facility, as in <https://doi.org/10.1093/bioinformatics/btae038>.
+
 A relatively earlier repository with specific focus on download of sumstats is as follows,
 
 <https://github.com/mikegloudemans/gwas-download>
